@@ -1,0 +1,302 @@
+<html>
+	<head>
+		<!-- Start list of links for Bootstrap4 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<!-- End list -->
+		<!--Settings for Bootstrap -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Load all functions for the Modal -->
+		<script src="modalFunction.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<div class="dropdown">
+				  		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">ToDo</button>
+				  		<div class="dropdown-menu">
+				  			<button class="dropdown-item" data-target="#newToDo" data-toggle="modal">New ToDo</button>
+				  			<button class="dropdown-item" data-target="#deleteToDo" data-toggle="modal">Delete ToDo</button>
+				  			<button class="dropdown-item" data-target="#changeToDo" data-toggle="modal">Change ToDo</button>
+				  		</div>
+			  		</div>
+				</li>
+				<li class="nav-item">
+				  <div class="dropdown">
+				  	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Server</button>
+				  	<div class="dropdown-menu">
+				  		<button class="dropdown-item" data-target="#currentServer" data-toggle="modal">Current Server</button>
+				  		<button class="dropdown-item" data-target="#listAllServer" data-toggle="modal">List of all Server</button>
+				  		<button class="dropdown-item" data-target="#newServer" data-toggle="modal">New Server</button>
+				  		<button class="dropdown-item" data-target="#deleteServer" data-toggle="modal">Delete Server</button>
+				  		<button class="dropdown-item" data-target="#settingServer" data-toggle="modal">Server Settings</button>
+				  	</div>
+				  </div>
+				</li>
+				<li class="nav-item">
+				  <div class="dropdown">
+				  	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">About</button>
+				  	<div class="dropdown-menu">
+				  		<button class="dropdown-item" data-target="#help" data-toggle="modal">Help</button>
+				  		<button class="dropdown-item" data-target="#about" data-toggle="modal">About</button>
+				  		<button class="dropdown-item" data-target="#settings" data-toggle="modal">Settings</button>
+				  	</div>
+				  </div>
+				</li>
+			  </ul>
+		</nav>
+		<div class="container">
+			<!-- New ToDo Modal -->
+			<div class="modal fade" id="newToDo">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">New ToDo</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+						<form action="/newToDo" target="iFrameRestController" method="get">
+							<div class="form-group">
+								<label for="titleToDo">Title of the ToDo:</label>
+								<input class="form-control" type="text" placeholder="Please enter the Title of ToDo" id="titleOfToDo" name="titleOfToDo"/>
+								<br />
+								<label for="dateOfToDo">Date of end:</label>
+								<input type="date" id="dateOfToDo" class="form-control" name="dateOfToDo" />
+								<br />
+								<label for="timeOfToDo">Time of end:</label>
+								<input type="time" id="timeOfToDo" class="form-control" name="timeOfToDo" />
+								<br />
+								<label for="priorityOfToDo">Select a priority:</label>
+								<select name="priorityOfToDo" id ="priorityOfToDo">
+									<option value="low">Low</option>
+									<option value="middle">Middle</option>
+									<option value="high">High</option>
+									<option value="critical">Critical</option>
+								</select>
+								<br />
+								<label for="textOfToDo">Type your text for the ToDo:</label>
+								<input type="text" class="form-control" id="textForToDo" name="textForToDo"/>
+								<br />
+								<input type="submit" value="Submit" onclick="closeNewToDoSubmit()"></input>
+							</div>
+						</form>
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- Delete ToDo Modal -->
+			<div class="modal fade" id="deleteToDo">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Delete ToDo</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+							Modal Body...
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- Change ToDo Modal -->
+			<div class="modal fade" id="changeToDo">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Change ToDo</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+						Modal Body...
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- Current Server Modal -->
+			<div class="modal fade" id="currentServer">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Current Server</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+						Modal Body...
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- List of all Server Modal -->
+			<div class="modal fade" id="listAllServer">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">List of All Server</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+						Modal Body...
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- New Server Modal -->
+			<div class="modal fade" id="newServer">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">New Server</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+						Modal Body...
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- Delete Server Modal -->
+			<div class="modal fade" id="deleteServer">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Delete Server</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+						Modal Body...
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- Setting Server Modal -->
+			<div class="modal fade" id="settingServer">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Server Settings</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+						Modal Body...
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- Help Modal -->
+			<div class="modal fade" id="help">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Help</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+						Modal Body...
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- About Modal -->
+			<div class="modal fade" id="about">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">About</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+						Modal Body...
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- Settings Modal -->
+			<div class="modal fade" id="settings">
+				<div class="modal-dialog model-xl">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Settings</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<!-- Modal Body -->
+						<div class="modal-body">
+						Modal Body...
+						</div>
+						<!-- Modal footer -->
+        				<div class="modal-footer">
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        				</div>
+					</div>
+				</div>
+			</div>
+			<!-- List of all ToDos -->
+			<iframe src="http://localhost:8080" style="margin: auto;margin-top: 10%; width: 90%; border: 1px solid black; height: 50%;"></iframe>
+			<!-- iFrame for the RestController -->
+			<iFrame style="display:none;" name="iFrameRestController"></iFrame>
+		</div>
+	</body>
+</html>
