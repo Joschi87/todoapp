@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+   todoapp_mysql_database:
+      image: mysql:5.7
+      container_name: todoapp_mysql_database
+      environment:
+         MYSQL_ROOT_PASSWORD: 'J0§ch1(/'
+         MYSQL_DATABASE: 'todoapp_database'
+         MYSQL_USER: 'todoappUser'
+         MYSQL_PASSWORD: 'W4lt3r27041998!'
+         volumes:
+           - todoapp_mysql_database_data:/var/lib/mysql
+
+Volumes:
+   todoapp_mysql_database_data:
