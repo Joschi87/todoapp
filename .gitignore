@@ -7,6 +7,9 @@
 # BlueJ files
 *.ctxt
 
+#databasefile
+*testdb.mv.db
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -23,7 +26,8 @@
 hs_err_pid*
 /target/
 
-# .Directory
+# Directory
 *.classpath
 *.project
 *.settings/
+*web/src/database/
