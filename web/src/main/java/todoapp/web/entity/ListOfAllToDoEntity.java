@@ -4,16 +4,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "listofalldates")
 public class ListOfAllToDoEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
 	private Integer id;
-	
 	@NotNull
 	private String toDoDate;
 

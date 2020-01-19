@@ -13,11 +13,11 @@ import todoapp.web.repository.ListOfAllToDoRepository;
 public class ListOfAllToDosService {
 	
 	@Autowired
-	static ListOfAllToDoRepository listOfAllToDoRepo;
+	ListOfAllToDoRepository listOfAllToDoRepo;
 	
-	public static List<ListOfAllToDoEntity> getAllToDos(){
+	public List<ListOfAllToDoEntity> getAllToDos(){
 		List<ListOfAllToDoEntity> listAllToDo = new ArrayList<>();
-		listOfAllToDoRepo.findAll().forEach(ListOfAllToDoEntity -> listAllToDo.add(ListOfAllToDoEntity));
+		listOfAllToDoRepo.findAll().forEach(listOfAllToDoEntity -> listAllToDo.add(listOfAllToDoEntity));
 		return listAllToDo;
 	}
 
