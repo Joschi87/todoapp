@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import todoapp.web.entity.ListOfAllToDoEntity;
 import todoapp.web.service.ListOfAllToDosService;
 
 @RestController
@@ -21,7 +20,7 @@ public class ListOfAllToDoController {
 	@RequestMapping(
 					path="/allToDoAsList",
 					method = RequestMethod.GET)
-	public List<String> getAllToDosFromDatabase() {
+	public String getAllToDosFromDatabase() {
 		
 		JSONArray listArray = new JSONArray(listService.getAllToDos());
 		List<String> test = new ArrayList<>();
@@ -29,7 +28,9 @@ public class ListOfAllToDoController {
 			test.add(listArray.getJSONObject(i).getString("toDoDate"));
 		}
 		
-		return test;
+		System.out.println(test);
+		
+		return "test";
 		
 	}
 	
