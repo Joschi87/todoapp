@@ -20,7 +20,7 @@ public class ListOfAllToDoController {
 	@RequestMapping(
 					path="/allToDoAsList",
 					method = RequestMethod.GET)
-	public List<ListOfAllToDoEntity> getAllToDosFromDatabase() {
+	public String getAllToDosFromDatabase() {
 		
 		
 		

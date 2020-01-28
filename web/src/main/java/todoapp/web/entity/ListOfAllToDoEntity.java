@@ -35,5 +35,10 @@ public class ListOfAllToDoEntity {
 		this.toDoDate = toDoDate;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("<a href='/ListOfToDoAt?date=%s'>%s</a></br>", toDoDate, toDoDate);
+	}
+	
 	
 }
