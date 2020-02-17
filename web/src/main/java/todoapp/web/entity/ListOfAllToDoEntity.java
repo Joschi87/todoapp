@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "listofalldates")
-public class ListOfAllToDoEntity {
+public class ListOfAllToDoEntity extends BasicHtmlStuff{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,7 +37,7 @@ public class ListOfAllToDoEntity {
 	
 	@Override
 	public String toString() {
-		return String.format("<a href='/ListOfToDoAt?date=%s'>%s</a></br>", toDoDate, toDoDate);
+		return String.format("<a href='/ListOfToDoAt?date=%s'><button type='button' class='btn btn-secondary'>%s</button></a><div class='float-rigth'><a href='http://localhost:8080/dayDone?id=%s'><button type='button' class='btn btn-success'>Day Done</button></a></div>", toDoDate, toDoDate, id);
 	}
 	
 	
