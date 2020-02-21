@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import todoapp.web.entity.BasicHtmlStuff;
+import todoapp.web.BasicHtmlStuff;
 import todoapp.web.entity.ListOfAllToDoEntity;
 import todoapp.web.repository.ListOfAllToDoRepository;
 

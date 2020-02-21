@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import todoapp.web.entity.BasicHtmlStuff;
+import todoapp.web.BasicHtmlStuff;
 import todoapp.web.entity.CreateToDoEntity;
 import todoapp.web.repository.CreateToDoRepository;
 

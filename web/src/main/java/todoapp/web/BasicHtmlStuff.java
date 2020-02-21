@@ -1,4 +1,4 @@
-package todoapp.web.entity;
+package todoapp.web;
 
 public class BasicHtmlStuff {
 	
