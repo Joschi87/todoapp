@@ -10,17 +10,24 @@ import todoapp.web.BasicHtmlStuff;
 public class GetInformationFromToDontroller extends BasicHtmlStuff{
 	
 	@GetMapping("/workingAtToDo")
-	public String getAllInformation(@RequestParam String title, @RequestParam String dateOfToDo, @RequestParam String timeOfToDo, @RequestParam String priority, @RequestParam String textOfToDo) {
+	public String getAllInformation(@RequestParam String id, @RequestParam String title, @RequestParam String dateOfToDo, @RequestParam String timeOfToDo, @RequestParam String priority, @RequestParam String textOfToDo) {
 		
 		String output = "";
 		
 		output += htmlHead;
 		
 		output += "<div class='container'><br />\n"
-				+ "		<form action='/changeToDo' target='iFrameForRestController' method='post'>\n"
-				+ "			<div class='alert alert-warning'><label>You are working at a ToDo</label></div>\n"
+				+ "		<form action='/changeToDo' target='_blank' method='post'>\n"
+				+ "			<div class='alert alert-warning'>"
+				+ "				<label>You are working at a ToDo! </ br><strong>Inforamtion</strong> ToDo has after the update a new ID Number!</label>"
+				+ "				<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n"
+				+ "    				<span aria-hidden=\"true\">&times;</span>\n"
+				+ "  			</button>"
+				+ "			</div>\n"
 				+ "			<div class='input-group mb-3'>\n"
-				+ "				<label>ToDo Title:&nbsp;&nbsp;&nbsp;</label>\n"
+				+ "				<label>ToDo ID:&nbsp;&nbsp;&nbsp;</label>\n"
+				+ "				<input type='text' class=''form-control' name='id' value='" + id + "' />\n"
+				+ "				<label>&nbsp;&nbsp;&nbsp;ToDo Title:&nbsp;&nbsp;&nbsp;</label>\n"
 				+ "				<input type='text' class='form-control' name='title' value='" + title + "' style='width: 200px;' />\n"
 				+ "			</div>\n"
 				+ "			<div class='input-group mb-3'>\n"
@@ -45,6 +52,7 @@ public class GetInformationFromToDontroller extends BasicHtmlStuff{
 				+ "			</div>"
 				+ "			<button type='submit' class='btn btn-success'>Save</button>\n"
 				+ "		</form>\n"
+				+ "		<button type='button' class='btn btn-primary' onclick='location.replace(\"http://localhost:8080/allToDoAsList\")'>Back to Start Screen</button>"
 				+ "</div>\n";
 		
 		return output;

@@ -3,7 +3,6 @@ package todoapp.web.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +25,7 @@ public class ListOfAllToDosService extends BasicHtmlStuff{
 		
 		Object[] listAllToDoObj = listAllToDo.toArray();
 		
-		outputString += htmlHead + listGroupStart;
+		outputString += htmlHead + navBarForIFrame + "<br />" + listGroupStart;
 		
 		for(int counter = 0; counter < listAllToDoObj.length; counter ++ ) {
 			outputString += "<li class='list-group-item'>" + listAllToDoObj[counter] + "</li>";

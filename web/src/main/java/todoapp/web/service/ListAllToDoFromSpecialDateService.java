@@ -25,15 +25,13 @@ public class ListAllToDoFromSpecialDateService extends BasicHtmlStuff{
 		
 		Object[] allToDoForTheDateObj = allToDoForTheDate.toArray();
 		
-		output += htmlHead + listGroupStart;
+		output += htmlHead + navBarForIFrame + "<br />" +  listGroupStart;
 		
 		for(int counter = 0; counter < allToDoForTheDateObj.length; counter++) {
 			output += "<li class='list-group-item'>" + allToDoForTheDateObj[counter] + "</li>";
 		}
 		
 		output += "</ul></html>";
-		
-		System.out.println(output);
 		
 		return output;
 		

@@ -66,6 +66,6 @@ public class CreateToDoEntity {
 	
 	@Override
 	public String toString() {
-		return String.format("%s | %s<div class='float-right'><a href='http://localhost:8080/toDoDone?titleOfToDo=%s&id=%s' target='iFrameForRestController'><button type='button' class='btn btn-success'>Done</button></a>&nbsp;&nbsp;&nbsp;<a href='http://localhost:8080/workingAtToDo?id=%s&title=%s&dateOfToDo=%s&timeOfToDo=%s&priority=%s&textOfToDo=%s'><button type='button' class='btn btn-warning'>Edit</button></a>&nbsp;&nbsp;&nbsp;<a href='http://localhost:8080/deleteToDo?id=%s&title=%s'><button type='button' class='btn btn-danger'>Delete</button></a></div>", titleOfToDo, timeOfToDo, titleOfToDo, id, id, titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, id, titleOfToDo);
+		return String.format("%s | %s<div class='float-right'><a href='http://localhost:8080/toDoDone?titleOfToDo=%s&id=%s' target='iFrameForRestController'><button type='button' class='btn btn-success'>Done</button></a>&nbsp;&nbsp;&nbsp;<a href='http://localhost:8080/workingAtToDo?id=%s&title=%s&dateOfToDo=%s&timeOfToDo=%s&priority=%s&textOfToDo=%s'><button type='button' class='btn btn-warning'>Edit</button></a>&nbsp;&nbsp;&nbsp;<a href='http://localhost:8080/deleteToDo?id=%s&title=%s' target='_blank'><button type='button' class='btn btn-danger'>Delete</button></a></div>", titleOfToDo, timeOfToDo, titleOfToDo, id, id, titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, id, titleOfToDo);
 	}
 }

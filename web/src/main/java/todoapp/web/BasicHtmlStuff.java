@@ -9,5 +9,11 @@ public class BasicHtmlStuff {
 			"		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
 	
 	public static String listGroupStart = "<ul class='list-group'>";
+	
+	public static String navBarForIFrame = "<ul class='nav nav-tabs'>"
+										 + "	<li class='nav-item'>"
+										 + "		<a href='http://localhost:8080/allToDoAsList'><Button type='button' class='btn btn-primary'>Start Page</button></a>"
+										 + "	</li>"
+										 + "</ul>";
 
 }

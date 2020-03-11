@@ -25,6 +25,7 @@ public class CreatingToDoController {
 	
 	@PostMapping(path = "/newToDo")
 	public void NewToDo(@RequestParam String titleOfToDo, @RequestParam String dateOfToDo, @RequestParam String timeOfToDo, @RequestParam String priorityOfToDo, @RequestParam String textForToDo){
+		
 		CreateToDoEntity createEntity = new CreateToDoEntity();
 		ListOfAllToDoEntity listOfAllToDoEntitiy = new ListOfAllToDoEntity();
 		List<CreateToDoEntity> listCreatingNewToDo = new ArrayList<>();
