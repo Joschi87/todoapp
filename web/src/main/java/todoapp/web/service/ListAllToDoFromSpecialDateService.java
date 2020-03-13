@@ -16,12 +16,12 @@ public class ListAllToDoFromSpecialDateService extends BasicHtmlStuff{
 	@Autowired
 	CreateToDoRepository todoRepo;
 	
-	public String getAllToDoForASpecialDate(String dateOfToDo) {
+	public String getAllToDoForASpecialDate() {
 		
 		String output = "";
 		
 		List<CreateToDoEntity> allToDoForTheDate = new ArrayList<>();
-		todoRepo.findByDateOfToDo(dateOfToDo).forEach(CreateToDoEntity -> allToDoForTheDate.add(CreateToDoEntity));
+		todoRepo.findAll().forEach(CreateToDoEntity -> allToDoForTheDate.add(CreateToDoEntity));
 		
 		Object[] allToDoForTheDateObj = allToDoForTheDate.toArray();
 		

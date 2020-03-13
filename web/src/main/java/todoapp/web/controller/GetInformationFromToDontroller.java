@@ -48,7 +48,7 @@ public class GetInformationFromToDontroller extends BasicHtmlStuff{
 				+ "			</div>\n"
 				+ "			<div class='input-group mb3'>\n"
 				+ "				<label>Text of ToDo:&nbsp;&nbsp;&nbsp;</label>\n"
-				+ "				<textarea name='text' rows='5' clos='30'>" + textOfToDo + "</textarea>\n"
+				+ "				<textarea name='text' rows='5' clos='100'>" + textOfToDo + "</textarea>\n"
 				+ "			</div>"
 				+ "			<button type='submit' class='btn btn-success'>Save</button>\n"
 				+ "		</form>\n"

@@ -12,7 +12,7 @@ public class BasicHtmlStuff {
 	
 	public static String navBarForIFrame = "<ul class='nav nav-tabs'>"
 										 + "	<li class='nav-item'>"
-										 + "		<a href='http://localhost:8080/allToDoAsList'><Button type='button' class='btn btn-primary'>Start Page</button></a>"
+										 + "		<a href='http://localhost:8080/allToDoAsList'><Button type='button' class='btn btn-primary'>Refresh</button></a>"
 										 + "	</li>"
 										 + "</ul>";
 

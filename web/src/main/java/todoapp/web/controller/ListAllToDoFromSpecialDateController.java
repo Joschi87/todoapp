@@ -13,10 +13,10 @@ public class ListAllToDoFromSpecialDateController {
 	@Autowired
 	ListAllToDoFromSpecialDateService specailDateService;
 
-	@GetMapping(path="/ListOfToDoAt")
-	public String testMethod(@RequestParam String date) {
+	@GetMapping(path="/allToDoAsList")
+	public String testMethod() {
 		
-		 return specailDateService.getAllToDoForASpecialDate(date);
+		 return specailDateService.getAllToDoForASpecialDate();
 
 	}
 	
