@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import todoapp.web.BasicHtmlStuff;
+import todoapp.web.lib.web.BasicHtmlStuff;
 
 @RestController
 public class GetInformationFromToDontroller extends BasicHtmlStuff{
@@ -52,7 +52,7 @@ public class GetInformationFromToDontroller extends BasicHtmlStuff{
 				+ "			</div>"
 				+ "			<button type='submit' class='btn btn-success'>Save</button>\n"
 				+ "		</form>\n"
-				+ "		<button type='button' class='btn btn-primary' onclick='location.replace(\"http://localhost:8080/allToDoAsList\")'>Back to Start Screen</button>"
+				+ "		<button type='button' class='btn btn-primary' onclick='location.replace(\"/allToDoAsList\")'>Back to Startscreen</button>"
 				+ "</div>\n";
 		
 		return output;

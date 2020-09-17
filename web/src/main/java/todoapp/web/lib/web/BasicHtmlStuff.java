@@ -1,4 +1,4 @@
-package todoapp.web;
+package todoapp.web.lib.web;
 
 public class BasicHtmlStuff {
 	
@@ -12,7 +12,7 @@ public class BasicHtmlStuff {
 	
 	public static String navBarForIFrame = "<ul class='nav nav-tabs'>"
 										 + "	<li class='nav-item'>"
-										 + "		<a href='http://localhost:8080/allToDoAsList'><Button type='button' class='btn btn-primary'>Refresh</button></a>"
+										 + "		<a href='/allToDoAsList'><Button type='button' class='btn btn-primary'>Refresh</button></a>"
 										 + "	</li>"
 										 + "</ul>";
 

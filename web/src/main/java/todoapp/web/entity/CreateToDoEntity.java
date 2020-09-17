@@ -25,6 +25,8 @@ public class CreateToDoEntity {
 	private String priorityOfToDo;
 	@NotNull
 	private String textForToDo;
+	@NotNull
+	private String status;
 	
 	//Getter and Setter method for creating a ToDo into a new Table
 	public Integer getId() {
@@ -63,9 +65,15 @@ public class CreateToDoEntity {
 	public void setTextForToDo(String textForToDo) {
 		this.textForToDo = textForToDo;
 	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getStatus() {
+		return status;
+	}
 	
 	@Override
 	public String toString() {
-		return String.format("%s | %s | %s<div class='float-right'><a href='http://localhost:8080/toDoDone?titleOfToDo=%s&id=%s' target='iFrameForRestController'><button type='button' class='btn btn-success'>Done</button></a>&nbsp;&nbsp;&nbsp;<a href='http://localhost:8080/workingAtToDo?id=%s&title=%s&dateOfToDo=%s&timeOfToDo=%s&priority=%s&textOfToDo=%s'><button type='button' class='btn btn-warning'>Open/Edit</button></a>&nbsp;&nbsp;&nbsp;<a href='http://localhost:8080/deleteToDo?id=%s&title=%s' target='_blank'><button type='button' class='btn btn-danger'>Delete</button></a></div>", titleOfToDo, dateOfToDo, timeOfToDo, titleOfToDo, id, id, titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, id, titleOfToDo);
+		return String.format("%s | %s | %s | %s<div class='float-right'><a href='/toDoDone?id=%s&title=%s&dateOfToDo=%s&timeOfToDo=%s&priority=%s&textOfToDo=%s' target='iFrameForRestController'><button type='button' class='btn btn-success'>Done</button></a>&nbsp;&nbsp;&nbsp;<a href='/workingAtToDo?id=%s&title=%s&dateOfToDo=%s&timeOfToDo=%s&priority=%s&textOfToDo=%s'><button type='button' class='btn btn-warning'>Open/Edit</button></a>&nbsp;&nbsp;&nbsp;<a href='/deleteToDo?id=%s&title=%s' target='_blank'><button type='button' class='btn btn-danger'>Delete</button></a></div>", titleOfToDo, dateOfToDo, timeOfToDo, status, id, titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, id, titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, id, titleOfToDo);
 	}
 }

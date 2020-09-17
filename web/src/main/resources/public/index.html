@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<link rel="stylesheet" href="style.css">
 		<!-- Start list of links for Bootstrap4 -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -8,39 +9,35 @@
 		<!-- End list -->
 		<!--Settings for Bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Load all functions for the Modal -->
-		<script src="modalFunction.js"></script>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-				  	<button type="button" class="btn btn-primary" data-target="#newToDo" data-toggle="modal">New ToDo</button>&nbsp;&nbsp;&nbsp;
-				</li>
-				<li class="nav-item">
-				  <div class="dropdown">
-				  	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Server</button>&nbsp;&nbsp;&nbsp;
-				  	<div class="dropdown-menu">
-				  		<button class="dropdown-item" data-target="#currentServer" data-toggle="modal">Current Server</button>
-				  		<button class="dropdown-item" data-target="#listAllServer" data-toggle="modal">List of all Server</button>
-				  		<button class="dropdown-item" data-target="#newServer" data-toggle="modal">New Server</button>
-				  		<button class="dropdown-item" data-target="#deleteServer" data-toggle="modal">Delete Server</button>
-				  		<button class="dropdown-item" data-target="#settingServer" data-toggle="modal">Server Settings</button>
-				  	</div>
-				  </div>
-				</li>
-				<li class="nav-item">
-				  <div class="dropdown">
-				  	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">About</button>&nbsp;&nbsp;&nbsp;
-				  	<div class="dropdown-menu">
-				  		<button class="dropdown-item" data-target="#help" data-toggle="modal">Help</button>
-				  		<button class="dropdown-item" data-target="#about" data-toggle="modal">About</button>
-				  		<button class="dropdown-item" data-target="#settings" data-toggle="modal">Settings</button>
-				  	</div>
-				  </div>
-				</li>
-			  </ul>
+		<nav class="navbar navbar-dark bg-dark">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			<p class="Title">
+				ToDo App
+			</p>
 		</nav>
+		<div class="collapse" id="navbarToggleExternalContent">
+			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<button type="button" class="btn btn-primary" data-target="#newToDo" data-toggle="modal">New ToDo</button>
+					</li>&nbsp;&nbsp;&nbsp;
+					<li class="nav-item">
+					<div class="dropdown">
+						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">About</button>
+						<div class="dropdown-menu">
+							<button class="dropdown-item" data-target="#help" data-toggle="modal">Help</button>
+							<button class="dropdown-item" data-target="#about" data-toggle="modal">About</button>
+							<button class="dropdown-item" data-target="#settings" data-toggle="modal">Settings</button>
+						</div>
+					</div>
+					</li>
+				</ul>
+			</nav>
+		</div>
 		<div class="container">
 			<!-- New ToDo Modal -->
 			<div class="modal fade" id="newToDo">
@@ -75,49 +72,11 @@
 								<label for="textOfToDo">Type your text for the ToDo:</label>
 								<input type="text" class="form-control" id="textForToDo" name="textForToDo"/>
 								<br />
-								<input type="submit" value="Submit" onclick="closeNewToDoSubmit()"></input>
+								<button class="btn btn-success" onclick="sendNewToDo()">Save NewToDo</button>
+								<br /><br />
+								<div class="alert alert-warning" role="alert" id="saveAlert">Please refresh this website, after you press the save button!</div>
 							</div>
 						</form>
-						</div>
-						<!-- Modal footer -->
-        				<div class="modal-footer">
-          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        				</div>
-					</div>
-				</div>
-			</div>
-			<!-- Delete ToDo Modal -->
-			<div class="modal fade" id="deleteToDo">
-				<div class="modal-dialog model-xl">
-					<div class="modal-content">
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<h4 class="modal-title">Delete ToDo</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-						<!-- Modal Body -->
-						<div class="modal-body">
-							Modal Body...
-						</div>
-						<!-- Modal footer -->
-        				<div class="modal-footer">
-          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        				</div>
-					</div>
-				</div>
-			</div>
-			<!-- Change ToDo Modal -->
-			<div class="modal fade" id="changeToDo">
-				<div class="modal-dialog model-xl">
-					<div class="modal-content">
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<h4 class="modal-title">Change ToDo</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-						<!-- Modal Body -->
-						<div class="modal-body">
-						Modal Body...
 						</div>
 						<!-- Modal footer -->
         				<div class="modal-footer">
@@ -292,4 +251,7 @@
 			<iFrame style="display:none;" name="iFrameRestController"></iFrame>
 		</div>
 	</body>
+	<!-- Load all JavaScript functions -->
+	<script src="modalFunction.js"></script>
+	<script src="SendNewToDo.js"></script>
 </html>

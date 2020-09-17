@@ -29,6 +29,7 @@ public class CreatingToDoController {
 		createEntity.setTimeOfToDo(timeOfToDo);
 		createEntity.setPriorityOfToDo(priorityOfToDo);
 		createEntity.setTextForToDo(textForToDo);
+		createEntity.setStatus("New ToDo");
 		
 		listCreatingNewToDo.add(createEntity);
 		

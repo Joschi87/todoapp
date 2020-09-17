@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import todoapp.web.BasicHtmlStuff;
 import todoapp.web.entity.CreateToDoEntity;
+import todoapp.web.lib.web.BasicHtmlStuff;
 import todoapp.web.repository.CreateToDoRepository;
 
 @Service
@@ -31,7 +31,7 @@ public class ListAllToDoFromSpecialDateService extends BasicHtmlStuff{
 			output += "<li class='list-group-item'>" + allToDoForTheDateObj[counter] + "</li>";
 		}
 		
-		output += "</ul></html>";
+		output += "</ul></script></html>";
 		
 		return output;
 		

@@ -36,6 +36,7 @@ public class ToDoChangeController {
 			createNewToDo.setTimeOfToDo(time);
 			createNewToDo.setPriorityOfToDo(priority);
 			createNewToDo.setTextForToDo(text);
+			createNewToDo.setStatus("ToDo Changed");
 			
 			listNewToDo.add(createNewToDo);
 			
@@ -47,7 +48,7 @@ public class ToDoChangeController {
 			
 			
 		}else {
-			System.out.println("Error by deleting a ToDo");
+			System.out.println("Error by deleting the ToDo");
 			output += "<script>alert('Change of ToDo Information are <b>not</b> successfully!');window.close();</script>";
 		}
 		return output;
