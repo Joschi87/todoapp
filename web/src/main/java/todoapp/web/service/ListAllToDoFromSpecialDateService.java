@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import todoapp.web.entity.CreateToDoEntity;
+import todoapp.web.lib.ifs.CreateToDoRepository;
 import todoapp.web.lib.web.BasicHtmlStuff;
-import todoapp.web.repository.CreateToDoRepository;
 
 @Service
 public class ListAllToDoFromSpecialDateService extends BasicHtmlStuff{

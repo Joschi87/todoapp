@@ -1,5 +1,7 @@
 package todoapp.web.entity;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +29,7 @@ public class CreateToDoEntity {
 	private String textForToDo;
 	@NotNull
 	private String status;
+	private ArrayList<String> release;
 	
 	//Getter and Setter method for creating a ToDo into a new Table
 	public Integer getId() {
@@ -70,6 +73,12 @@ public class CreateToDoEntity {
 	}
 	public String getStatus() {
 		return status;
+	}
+	public void setRelease(ArrayList<String> release) {
+		this.release = release;
+	}
+	public ArrayList<String> getRelease() {
+		return release;
 	}
 	
 	@Override

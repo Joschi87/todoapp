@@ -51,4 +51,5 @@ public class UserEntity {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
 }

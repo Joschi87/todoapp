@@ -1,4 +1,4 @@
-package todoapp.web.repository;
+package todoapp.web.lib.ifs;
 
 import java.util.List;
 
