@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import todoapp.web.entity.UserEntity;
 
 @Repository
-public interface UserRepository extends CrudRepository<UserEntity, Integer>, IFindUsername<UserEntity>, IFindID<UserEntity>{
+public interface UserRepository extends CrudRepository<UserEntity, Integer>, IFindUsername<UserEntity>, IFindID<UserEntity>, IFindPassword<UserEntity>{
 	
 }
