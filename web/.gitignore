@@ -31,5 +31,6 @@ hs_err_pid*
 *.project
 *.settings/
 *web/src/database/
+*bin/*
 
 *.properties
