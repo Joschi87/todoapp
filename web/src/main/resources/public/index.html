@@ -26,6 +26,16 @@
 						<button type="button" class="btn btn-primary" data-target="#newToDo" data-toggle="modal">New ToDo</button>
 					</li>&nbsp;&nbsp;&nbsp;
 					<li class="nav-item">
+						<div class="dropdown">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">User</button>
+							<div class="dropdown-menu">
+								<button  class="dropdown-item" data-target="#login" data-toggle="modal">Login</button>
+								<button  class="dropdown-item" data-target="#register" data-toggle="modal">Register</button>
+								<button  class="dropdown-item" onclick="logout()">Logout</button>
+							</div>
+						</div>
+					</li>&nbsp;&nbsp;&nbsp;
+					<li class="nav-item">
 					<div class="dropdown">
 						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">About</button>
 						<div class="dropdown-menu">
@@ -246,7 +256,7 @@
 				</div>
 			</div>
 			<!-- List of all ToDos -->
-			<iframe src="/allToDoAsList" style="margin: auto;margin-top: 10%; width: 90%; border: 1px solid black; height: 75%;"></iframe>
+			<iframe src="/allToDoAsList" style="margin: auto;margin-top: 3.5%; width: 90%; border: 1px solid black; height: 75%;"></iframe>
 			<!-- iFrame for the RestController -->
 			<iFrame style="display:none;" name="iFrameRestController"></iFrame>
 		</div>
