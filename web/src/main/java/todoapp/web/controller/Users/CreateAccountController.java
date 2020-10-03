@@ -15,6 +15,7 @@ public class CreateAccountController {
 
 	@PostMapping(path="/register")
 	public String createAccount(@RequestParam String username, @RequestParam String password) {
+		System.out.println(username +" "+password);
 		return userService.registerNewUser(username, password);
 	}
 	
