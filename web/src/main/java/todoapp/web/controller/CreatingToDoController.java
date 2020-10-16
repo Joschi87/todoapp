@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import todoapp.web.entity.CreateToDoEntity;
+import todoapp.web.lib.exception.CreateToDoException;
 import todoapp.web.lib.ifs.CreateToDoRepository;
 
 
@@ -22,6 +23,8 @@ public class CreatingToDoController {
 	public void NewToDo(@RequestParam String titleOfToDo, @RequestParam String dateOfToDo, @RequestParam String timeOfToDo, @RequestParam String priorityOfToDo, @RequestParam String textForToDo){
 		
 		CreateToDoEntity createEntity = new CreateToDoEntity();
+		
+
 		List<CreateToDoEntity> listCreatingNewToDo = new ArrayList<>();
 		
 		createEntity.setTitleOfToDo(titleOfToDo);
@@ -33,7 +36,7 @@ public class CreatingToDoController {
 		
 		listCreatingNewToDo.add(createEntity);
 		
-		createToDoRepo.saveAll(listCreatingNewToDo); 
+		createToDoRepo.saveAll(listCreatingNewToDo);
 		
 	}
 

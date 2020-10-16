@@ -113,7 +113,29 @@
 									<label for="PasswordAgain">Repeat password:</label>
 									<input type="password" id="passwordInput2" onchange="checkPassword()" /><br />
 									<p id="returnCheckPassword"></p><br />
-									<button type="button" class="btn btn-success" id="RegisterButton" onclick="regsiterUser()">Register</button>
+									<button type="submit"class="btn btn-success">Speichern</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Login Modal-->
+			<div class="modal fade" id="login">
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Login</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+							<form action="/login" target="iFrameRestController" method="GET">
+								<div class="form-group">
+									<label for="username">Username:</label>
+									<input type="text" name="username" /><br />
+									<label for="password">Password:</label>
+									<input type="password" name="password" /><br />
+									<button type="submit" class="btn btn-success">Login</button>
 								</div>
 							</form>
 						</div>

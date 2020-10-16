@@ -1,7 +1,5 @@
 package todoapp.web.entity;
 
-import java.util.ArrayList;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,8 +20,6 @@ public class UserEntity {
 	@NotNull
 	private String password;
 	@NotNull
-	private ArrayList<String> groups;
-	@NotNull
 	private String role;
 	
 	
@@ -38,12 +34,6 @@ public class UserEntity {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public ArrayList<String> getGroups() {
-		return groups;
-	}
-	public void setGroups(ArrayList<String> groups) {
-		this.groups = groups;
 	}
 	public String getRole() {
 		return role;
