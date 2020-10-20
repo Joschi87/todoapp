@@ -35,25 +35,22 @@ public class UserService {
 		
 	}
 	
-	public String loginUser(String username, String password, HttpServletResponse response) throws LoginException{
+	public String loginUser(String username, String password, HttpServletResponse response) {
 		String output = "";
-		String usernameAsEncryptedString = username;/*Cryption.encrypt(username, password); */
-		String passwordAsEncryptedString = password;/*Cryption.encrypt(password, password);*/
+		String usernameAsEncryptedString = Cryption.encrypt(username, password); 
+		String passwordAsEncryptedString = Cryption.encrypt(password, password);
 		System.out.println(userRepository.getUsername(usernameAsEncryptedString));
 		System.out.println(userRepository.getPassword(passwordAsEncryptedString));
 		
-		try {
-			if(userRepository.getUsername(usernameAsEncryptedString).toString().equals(userRepository.getPassword(passwordAsEncryptedString).toString())){
-				GenerateCookie.setUsernameCookie(usernameAsEncryptedString, response);
-				output = "<script>alert('Login successful')</script>";
-				System.out.println("Angemeldet!");
-			}else {
-				output = "<script>alert('Login unsuccessful')</script>";
-				throw new LoginException("Login failed by Username: " + username);
-			}
-		}catch(LoginException e) {
-			System.out.println(e.getMessage());
+		if(userRepository.getUsername(usernameAsEncryptedString).toString().equals(userRepository.getPassword(passwordAsEncryptedString).toString())){
+			GenerateCookie.setUsernameCookie(usernameAsEncryptedString, response);
+			output = "<script>alert('Login successful');$('#login').modal('hide')</script>";
+			System.out.println("Angemeldet!");
+		}else {
+			output = "<script>alert('Login unsuccessful')</script>";
+			
 		}
+	
 		return output;
 	}
 
