@@ -13,7 +13,7 @@ import todoapp.web.entity.UserEntity;
 import todoapp.web.lib.exception.LoginException;
 import todoapp.web.lib.ifs.UserRepository;
 import todoapp.web.lib.utils.Cryption;
-import todoapp.web.lib.utils.GenerateCookie;
+import todoapp.web.lib.utils.ToDoCookies;
 
 @Service
 public class UserService {
@@ -39,11 +39,9 @@ public class UserService {
 		String output = "";
 		String usernameAsEncryptedString = Cryption.encrypt(username, password); 
 		String passwordAsEncryptedString = Cryption.encrypt(password, password);
-		System.out.println(userRepository.getUsername(usernameAsEncryptedString));
-		System.out.println(userRepository.getPassword(passwordAsEncryptedString));
 		
 		if(userRepository.getUsername(usernameAsEncryptedString).toString().equals(userRepository.getPassword(passwordAsEncryptedString).toString())){
-			GenerateCookie.setUsernameCookie(usernameAsEncryptedString, response);
+			ToDoCookies.setUsernameCookie(usernameAsEncryptedString, response);
 			output = "<script>alert('Login successful');$('#login').modal('hide')</script>";
 			System.out.println("Angemeldet!");
 		}else {
@@ -51,6 +49,19 @@ public class UserService {
 			
 		}
 	
+		return output;
+	}
+	
+	public String logoutUser(HttpServletRequest request, HttpServletResponse response) {
+		String output = "";
+		if(!ToDoCookies.getUserCookie(request).isEmpty()) {
+			ToDoCookies.deleteUserCookie(response);
+			if(!ToDoCookies.findUserCookie(request)) {
+				output = "<script>alert('Logout successful')</script>";
+			}else {
+				output = "<script>alert('Logout failed!!!')</script>";
+			}
+		}
 		return output;
 	}
 
