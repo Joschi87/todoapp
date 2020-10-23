@@ -19,8 +19,6 @@ public class UserEntity {
 	private String username;
 	@NotNull
 	private String password;
-	@NotNull
-	private String role;
 	
 	
 	public String getUsername() {
@@ -35,11 +33,4 @@ public class UserEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
 }

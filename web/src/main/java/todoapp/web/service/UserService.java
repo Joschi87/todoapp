@@ -27,12 +27,9 @@ public class UserService {
 		
 		userEntity.setUsername(Cryption.encrypt(username, password));
 		userEntity.setPassword(Cryption.encrypt(password, password));
-		userEntity.setRole(" ");
 		
 		list.add(userEntity);
-		
 		userRepository.saveAll(list);
-		
 	}
 	
 	public String loginUser(String username, String password, HttpServletResponse response) {
@@ -48,7 +45,6 @@ public class UserService {
 			output = "<script>alert('Login unsuccessful')</script>";
 			
 		}
-	
 		return output;
 	}
 	
