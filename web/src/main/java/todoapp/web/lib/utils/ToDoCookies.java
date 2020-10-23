@@ -43,16 +43,22 @@ public class ToDoCookies {
 		 Cookie cookie = new Cookie("ToDoAppUser", null);
 		 cookie.setMaxAge(0);
 		 cookie.setPath("/");
+		 response.addCookie(cookie);
 	 }
 	 
 	 public static boolean findUserCookie(HttpServletRequest request) {
 		 boolean output = true;
 		 Cookie[] cookies = request.getCookies();
 		 for (Cookie cookie : cookies) {
+			 System.out.println(cookie.getName());
 			if(cookie.getName().equals("ToDoAppUser")) {
-				output = false;
+				if(cookie.getValue().equals(null)) {
+					output = true;
+				}else {
+					output = false;
+				}
 			}else{
-				output = true;
+				output = false;
 			}
 		}
 		 return output;

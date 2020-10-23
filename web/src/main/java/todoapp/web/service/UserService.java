@@ -42,7 +42,7 @@ public class UserService {
 		
 		if(userRepository.getUsername(usernameAsEncryptedString).toString().equals(userRepository.getPassword(passwordAsEncryptedString).toString())){
 			ToDoCookies.setUsernameCookie(usernameAsEncryptedString, response);
-			output = "<script>alert('Login successful');$('#login').modal('hide')</script>";
+			output = "<script>alert('Login successful')</script>";
 			System.out.println("Angemeldet!");
 		}else {
 			output = "<script>alert('Login unsuccessful')</script>";
@@ -54,13 +54,11 @@ public class UserService {
 	
 	public String logoutUser(HttpServletRequest request, HttpServletResponse response) {
 		String output = "";
-		if(!ToDoCookies.getUserCookie(request).isEmpty()) {
-			ToDoCookies.deleteUserCookie(response);
-			if(!ToDoCookies.findUserCookie(request)) {
-				output = "<script>alert('Logout successful')</script>";
-			}else {
-				output = "<script>alert('Logout failed!!!')</script>";
-			}
+		ToDoCookies.deleteUserCookie(response);
+		if(!ToDoCookies.findUserCookie(request)) {
+			output = "<script>alert('Logout successful')</script>";
+		}else {
+			output = "<script>alert('Logout failed!!!')</script>";
 		}
 		return output;
 	}
