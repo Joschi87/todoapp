@@ -6,21 +6,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import todoapp.web.entity.CreateToDoEntity;
-import todoapp.web.lib.ifs.CreateToDoRepository;
+import todoapp.web.entity.ToDoEntity;
+import todoapp.web.lib.ifs.ToDoRepository;
 import todoapp.web.lib.web.BasicHtmlStuff;
 
 @Service
 public class ListAllToDoFromSpecialDateService extends BasicHtmlStuff{
 	
 	@Autowired
-	CreateToDoRepository todoRepo;
+	ToDoRepository todoRepo;
 	
 	public String getAllToDoForASpecialDate() {
 		
 		String output = "";
 		
-		List<CreateToDoEntity> allToDoForTheDate = new ArrayList<>();
+		List<ToDoEntity> allToDoForTheDate = new ArrayList<>();
 		todoRepo.findAll().forEach(CreateToDoEntity -> allToDoForTheDate.add(CreateToDoEntity));
 		
 		Object[] allToDoForTheDateObj = allToDoForTheDate.toArray();

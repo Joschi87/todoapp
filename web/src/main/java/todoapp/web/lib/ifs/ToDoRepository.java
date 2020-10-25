@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import todoapp.web.entity.CreateToDoEntity;
+import todoapp.web.entity.ToDoEntity;
 
 @Repository
-public interface CreateToDoRepository extends CrudRepository<CreateToDoEntity, Integer> {
+public interface ToDoRepository extends CrudRepository<ToDoEntity, Integer> {
 
-	public List<CreateToDoEntity> findByDateOfToDo(String dateOfToDo);
+	public List<ToDoEntity> findByDateOfToDo(String dateOfToDo);
 	
 }

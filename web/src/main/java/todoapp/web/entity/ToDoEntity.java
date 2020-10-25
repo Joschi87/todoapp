@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Todos")
-public class CreateToDoEntity {
+public class ToDoEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,6 +30,7 @@ public class CreateToDoEntity {
 	@NotNull
 	private String status;
 	private ArrayList<String> release;
+	private String todoForUser;
 	
 	//Getter and Setter method for creating a ToDo into a new Table
 	public Integer getId() {
@@ -79,6 +80,12 @@ public class CreateToDoEntity {
 	}
 	public ArrayList<String> getRelease() {
 		return release;
+	}
+	public void setToDoForUser(String user) {
+		this.todoForUser=user;
+	}
+	public String getToDoForUser() {
+		return todoForUser;
 	}
 	
 	@Override
