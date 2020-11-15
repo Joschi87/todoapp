@@ -46,12 +46,12 @@ public class ToDoCookies {
 		 response.addCookie(cookie);
 	 }
 	 
-	 public static boolean findUserCookie(HttpServletRequest request) {
+	 public static boolean findCookie(HttpServletRequest request, String cookieName) {
 		 boolean output = true;
 		 Cookie[] cookies = request.getCookies();
 		 for (Cookie cookie : cookies) {
 			 System.out.println(cookie.getName());
-			if(cookie.getName().equals("ToDoAppUser")) {
+			if(cookie.getName().equals(cookieName)) {
 				if(cookie.getValue().equals(null)) {
 					output = true;
 				}else {
@@ -62,5 +62,18 @@ public class ToDoCookies {
 			}
 		}
 		 return output;
+	 }
+	 
+	 public static void setKey(String key, HttpServletResponse response) {
+		 Cookie cookie = new Cookie("key", key);
+		 cookie.setPath("/");
+		 response.addCookie(cookie);
+	 }
+	 
+	 public static void deleteKeyCookie(HttpServletResponse response) {
+		 Cookie cookie = new Cookie("key", null);
+		 cookie.setMaxAge(0);
+		 cookie.setPath("/");
+		 response.addCookie(cookie);
 	 }
 }

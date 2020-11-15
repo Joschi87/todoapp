@@ -3,11 +3,14 @@ package todoapp.web.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import todoapp.web.entity.ToDoEntity;
 import todoapp.web.lib.ifs.ToDoRepository;
+import todoapp.web.lib.utils.ToDoCookies;
 
 @Service
 public class ToDoService {
@@ -15,9 +18,10 @@ public class ToDoService {
 	@Autowired
 	ToDoRepository toDoRepository;
 	
-	public void createToDo(String titleOfToDo, String dateOfToDo, String timeOfToDo, String priorityOfToDo, String textForToDo) {
+	public void createToDo(String titleOfToDo, String dateOfToDo, String timeOfToDo, String priorityOfToDo, String textForToDo, HttpServletRequest request) {
 		ToDoEntity createEntity = new ToDoEntity();
 		List<ToDoEntity> listCreatingNewToDo = new ArrayList<>();
+		String username = ToDoCookies.getUserCookie(request);
 		
 		createEntity.setTitleOfToDo(titleOfToDo);
 		createEntity.setDateOfToDo(dateOfToDo);
@@ -25,6 +29,7 @@ public class ToDoService {
 		createEntity.setPriorityOfToDo(priorityOfToDo);
 		createEntity.setTextForToDo(textForToDo);
 		createEntity.setStatus("New ToDo");
+		createEntity.setAuthor(username);
 		
 		listCreatingNewToDo.add(createEntity);
 		toDoRepository.saveAll(listCreatingNewToDo);

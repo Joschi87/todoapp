@@ -30,7 +30,8 @@ public class ToDoEntity {
 	@NotNull
 	private String status;
 	private ArrayList<String> release;
-	private String todoForUser;
+	//private String todoForUser;
+	private String author;
 	
 	//Getter and Setter method for creating a ToDo into a new Table
 	public Integer getId() {
@@ -81,11 +82,17 @@ public class ToDoEntity {
 	public ArrayList<String> getRelease() {
 		return release;
 	}
-	public void setToDoForUser(String user) {
+	/*public void setToDoForUser(String user) {
 		this.todoForUser=user;
 	}
 	public String getToDoForUser() {
 		return todoForUser;
+	}*/
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getAuthor() {
+		return author;
 	}
 	
 	@Override

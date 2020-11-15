@@ -16,8 +16,8 @@ public class LoginController {
 	UserService userService;
 
 	@PostMapping(path="/login")
-	public String loginUserController(@RequestParam String username, @RequestParam String password, HttpServletResponse response) {
-		return userService.loginUser(username, password, response);
+	public String loginUserController(@RequestParam String username, @RequestParam String password, @RequestParam String key, HttpServletResponse response) {
+		return userService.loginUser(username, password, key, response);
 	}
 	
 }

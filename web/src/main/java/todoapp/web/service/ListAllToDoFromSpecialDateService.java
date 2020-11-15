@@ -36,5 +36,9 @@ public class ListAllToDoFromSpecialDateService extends BasicHtmlStuff{
 		return output;
 		
 	}
+	
+	public String getAllToDosByUsername() {
+		return "";
+	}
 
 }

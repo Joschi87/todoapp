@@ -14,8 +14,8 @@ public class CreateAccountController {
 	UserService userService;
 
 	@PostMapping(path="/register")
-	public void createAccount(@RequestParam String username, @RequestParam String password) {
-		userService.registerNewUser(username, password);
+	public void createAccount(@RequestParam String username, @RequestParam String password, @RequestParam String key) {
+		userService.registerNewUser(username, password, key);
 	}
 	
 }

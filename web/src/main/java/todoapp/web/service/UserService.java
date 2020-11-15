@@ -21,29 +21,28 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public void registerNewUser(String username, String password) {
+	public void registerNewUser(String username, String password, String key) {
 		UserEntity userEntity = new UserEntity();
 		List<UserEntity> list = new ArrayList<>();
 		
-		userEntity.setUsername(Cryption.encrypt(username, password));
-		userEntity.setPassword(Cryption.encrypt(password, password));
+		userEntity.setUsername(Cryption.encrypt(username, key));
+		userEntity.setPassword(Cryption.encrypt(password, key));
 		
 		list.add(userEntity);
 		userRepository.saveAll(list);
 	}
 	
-	public String loginUser(String username, String password, HttpServletResponse response) {
+	public String loginUser(String username, String password, String key, HttpServletResponse response) {
 		String output = "";
-		String usernameAsEncryptedString = Cryption.encrypt(username, password); 
-		String passwordAsEncryptedString = Cryption.encrypt(password, password);
+		String usernameAsEncryptedString = Cryption.encrypt(username, key); 
+		String passwordAsEncryptedString = Cryption.encrypt(password, key);
 		
 		if(userRepository.getUsername(usernameAsEncryptedString).toString().equals(userRepository.getPassword(passwordAsEncryptedString).toString())){
 			ToDoCookies.setUsernameCookie(usernameAsEncryptedString, response);
+			ToDoCookies.setKey(key, response);
 			output = "<script>alert('Login successful')</script>";
-			System.out.println("Angemeldet!");
 		}else {
 			output = "<script>alert('Login unsuccessful')</script>";
-			
 		}
 		return output;
 	}
@@ -51,7 +50,9 @@ public class UserService {
 	public String logoutUser(HttpServletRequest request, HttpServletResponse response) {
 		String output = "";
 		ToDoCookies.deleteUserCookie(response);
-		if(!ToDoCookies.findUserCookie(request)) {
+		ToDoCookies.deleteKeyCookie(response);
+		if(!ToDoCookies.findCookie(request, "ToDoAppUser") && ToDoCookies.findCookie(request, "key")) {
+			
 			output = "<script>alert('Logout successful')</script>";
 		}else {
 			output = "<script>alert('Logout failed!!!')</script>";

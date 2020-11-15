@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import todoapp.web.entity.ToDoEntity;
 
 @Repository
-public interface ToDoRepository extends CrudRepository<ToDoEntity, Integer> {
+public interface ToDoRepository extends CrudRepository<ToDoEntity, Integer>{
 
 	public List<ToDoEntity> findByDateOfToDo(String dateOfToDo);
 	
