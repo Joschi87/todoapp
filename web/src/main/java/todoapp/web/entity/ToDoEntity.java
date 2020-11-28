@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.json.JSONObject;
+
 @Entity
 @Table(name = "Todos")
 public class ToDoEntity {
@@ -97,6 +99,7 @@ public class ToDoEntity {
 	
 	@Override
 	public String toString() {
-		return String.format("%s | %s | %s | %s<div class='float-right'><a href='/toDoDone?id=%s&title=%s&dateOfToDo=%s&timeOfToDo=%s&priority=%s&textOfToDo=%s' target='iFrameForRestController'><button type='button' class='btn btn-success'>Done</button></a>&nbsp;&nbsp;&nbsp;<a href='/workingAtToDo?id=%s&title=%s&dateOfToDo=%s&timeOfToDo=%s&priority=%s&textOfToDo=%s'><button type='button' class='btn btn-warning'>Open/Edit</button></a>&nbsp;&nbsp;&nbsp;<a href='/deleteToDo?id=%s&title=%s' target='_blank'><button type='button' class='btn btn-danger'>Delete</button></a></div>", titleOfToDo, dateOfToDo, timeOfToDo, status, id, titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, id, titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, id, titleOfToDo);
+		//return String.format("%s | %s | %s | %s<div class='float-right'><a href='/toDoDone?id=%s&title=%s&dateOfToDo=%s&timeOfToDo=%s&priority=%s&textOfToDo=%s' target='iFrameForRestController'><button type='button' class='btn btn-success'>Done</button></a>&nbsp;&nbsp;&nbsp;<a href='/workingAtToDo?id=%s&title=%s&dateOfToDo=%s&timeOfToDo=%s&priority=%s&textOfToDo=%s'><button type='button' class='btn btn-warning'>Open/Edit</button></a>&nbsp;&nbsp;&nbsp;<a href='/deleteToDo?id=%s&title=%s' target='_blank'><button type='button' class='btn btn-danger'>Delete</button></a></div>", titleOfToDo, dateOfToDo, timeOfToDo, status, id, titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, id, titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, id, titleOfToDo);
+		return new JSONObject().put("ID", id).put("Title", titleOfToDo).put("Date", dateOfToDo).put("Time", timeOfToDo).put("Priority", priorityOfToDo).put("Text", textForToDo).put("Status", status).put("Author", author).toString();
 	}
 }

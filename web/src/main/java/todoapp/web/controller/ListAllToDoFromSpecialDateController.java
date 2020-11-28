@@ -5,16 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import todoapp.web.service.ListAllToDoFromSpecialDateService;
+import todoapp.web.service.ToDoService;
 
 @RestController
 public class ListAllToDoFromSpecialDateController {
 	
 	@Autowired
-	ListAllToDoFromSpecialDateService specailDateService;
+	ToDoService todoService;
 
 	@GetMapping(path="/allToDoAsList")
 	public String allToDoAsList() {
-		 return specailDateService.getAllToDoForASpecialDate();
+		return todoService.representDatabaseTranslatedFromJSON();
 	}
 	
 }

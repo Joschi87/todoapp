@@ -16,25 +16,12 @@ public class ListAllToDoFromSpecialDateService extends BasicHtmlStuff{
 	@Autowired
 	ToDoRepository todoRepo;
 	
-	public String getAllToDoForASpecialDate() {
-		
+	public  String getAllToDoForASpecialDateAsJson() {
 		String output = "";
-		
 		List<ToDoEntity> allToDoForTheDate = new ArrayList<>();
-		todoRepo.findAll().forEach(CreateToDoEntity -> allToDoForTheDate.add(CreateToDoEntity));
-		
-		Object[] allToDoForTheDateObj = allToDoForTheDate.toArray();
-		
-		output += htmlHead + navBarForIFrame + "<br />" +  listGroupStart;
-		
-		for(int counter = 0; counter < allToDoForTheDateObj.length; counter++) {
-			output += "<li class='list-group-item'>" + allToDoForTheDateObj[counter] + "</li>";
-		}
-		
-		output += "</ul></script></html>";
-		
+		todoRepo.findAll().forEach(ToDoEntity -> allToDoForTheDate.add(ToDoEntity));
+		output = allToDoForTheDate.toString();
 		return output;
-		
 	}
 	
 	public String getAllToDosByUsername() {

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import todoapp.web.lib.web.BasicHtmlStuff;
 
 @RestController
-public class GetInformationFromToDontroller extends BasicHtmlStuff{
+public class GetInformationFromToDoController extends BasicHtmlStuff{
 	
 	@GetMapping("/workingAtToDo")
 	public String getAllInformation(@RequestParam String id, @RequestParam String title, @RequestParam String dateOfToDo, @RequestParam String timeOfToDo, @RequestParam String priority, @RequestParam String textOfToDo) {
@@ -20,7 +20,7 @@ public class GetInformationFromToDontroller extends BasicHtmlStuff{
 				+ "		<form action='/changeToDo' target='_blank' method='post'>\n"
 				+ "			<div class='form-group'>"
 				+ "				<div class='alert alert-warning'>"
-				+ "					<label>You are working at a ToDo! </ br><strong>Inforamtion</strong> ToDo has after the update a new ID Number!</label>"
+				+ "					You are working at a ToDo! </ br><strong>Inforamtion</strong> ToDo has after the update a new ID Number!"
 				+ "					<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n"
 				+ "    					<span aria-hidden=\"true\">&times;</span>\n"
 				+ "  				</button>"
