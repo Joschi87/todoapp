@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>todoapp</groupId>
-	<artifactId>web</artifactId>
+	<artifactId>server</artifactId>
 	<version>0.1.4-SNAPSHOT</version>
 	<name>web</name>
 	<description>Demo project for Spring Boot</description>
