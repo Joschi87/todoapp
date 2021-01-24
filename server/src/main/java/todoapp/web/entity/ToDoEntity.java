@@ -19,15 +19,15 @@ public class ToDoEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
 	private Integer id;
-	@NotNull
+	@NotNull(message = "Forget a title")
 	private String titleOfToDo;
-	@NotNull
+	@NotNull(message = "Forget a date")
 	private String dateOfToDo;
-	@NotNull
+	@NotNull(message = "Forget a time")
 	private String timeOfToDo;
-	@NotNull
+	@NotNull(message = "Forget a priority")
 	private String priorityOfToDo;
-	@NotNull
+	@NotNull(message = "Forget a text")
 	private String textForToDo;
 	@NotNull
 	private String status;
