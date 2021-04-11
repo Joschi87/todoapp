@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import todoapp.web.entity.UserEntity;
-import todoapp.web.lib.exception.LoginException;
 import todoapp.web.lib.ifs.UserRepository;
 import todoapp.web.lib.utils.Cryption;
 import todoapp.web.lib.utils.ToDoCookies;
@@ -32,7 +31,7 @@ public class UserService {
 		userRepository.saveAll(list);
 	}
 	
-	public String loginUser(String username, String password, String key, HttpServletResponse response) {
+	public String loginUser(String username, String password, String key, HttpServletResponse response){
 		String output = "";
 		String usernameAsEncryptedString = Cryption.encrypt(username, key); 
 		String passwordAsEncryptedString = Cryption.encrypt(password, key);
@@ -51,7 +50,7 @@ public class UserService {
 		String output = "";
 		ToDoCookies.deleteUserCookie(response);
 		ToDoCookies.deleteKeyCookie(response);
-		if(!ToDoCookies.findCookie(request, "ToDoAppUser") && ToDoCookies.findCookie(request, "key")) {
+		if(!ToDoCookies.findCookie(request, "ToDoAppUser") && !ToDoCookies.findCookie(request, "key")) {
 			
 			output = "<script>alert('Logout successful')</script>";
 		}else {
@@ -59,5 +58,4 @@ public class UserService {
 		}
 		return output;
 	}
-
 }
