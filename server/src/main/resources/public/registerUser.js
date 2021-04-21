@@ -24,5 +24,7 @@ function registerUser(){
         request.open('POST', '/register', true);
         request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         request.send('username='+username+'&password='+password);
+
+        
     }
 }

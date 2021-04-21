@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,7 @@ public class LogoutController {
 	UserService userService;
 	
 	@GetMapping(path="/logout")
-	public String logoutUserController(HttpServletRequest request, HttpServletResponse response) {
+	public ResponseEntity<String> logoutUserController(HttpServletRequest request, HttpServletResponse response) {
 		return userService.logoutUser(request, response);
 	}
 

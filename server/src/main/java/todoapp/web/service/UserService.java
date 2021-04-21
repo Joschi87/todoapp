@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import todoapp.web.entity.UserEntity;
@@ -20,7 +22,12 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public void registerNewUser(String username, String password, String key) {
+	public ResponseEntity<String> registerNewUser(String username, String password, String key) {
+
+		if(username.isEmpty() || password.isEmpty() || key.isEmpty()){
+			return new ResponseEntity<>("One or many parameters are empty", HttpStatus.BAD_REQUEST);
+		}
+
 		UserEntity userEntity = new UserEntity();
 		List<UserEntity> list = new ArrayList<>();
 		
@@ -29,33 +36,34 @@ public class UserService {
 		
 		list.add(userEntity);
 		userRepository.saveAll(list);
+
+		return new ResponseEntity<>("Account created", HttpStatus.CREATED);
 	}
 	
-	public String loginUser(String username, String password, String key, HttpServletResponse response){
-		String output = "";
+	public ResponseEntity<String> loginUser(String username, String password, String key, HttpServletResponse response){
 		String usernameAsEncryptedString = Cryption.encrypt(username, key); 
 		String passwordAsEncryptedString = Cryption.encrypt(password, key);
 		
 		if(userRepository.getUsername(usernameAsEncryptedString).toString().equals(userRepository.getPassword(passwordAsEncryptedString).toString())){
 			ToDoCookies.setUsernameCookie(usernameAsEncryptedString, response);
 			ToDoCookies.setKey(key, response);
-			output = "<script>alert('Login successful')</script>";
+			return new ResponseEntity<>("Login successful", HttpStatus.ACCEPTED);
+			//output = "<script>alert('Login successful')</script>";
 		}else {
-			output = "<script>alert('Login unsuccessful')</script>";
+			return new ResponseEntity<>("LOgin unsuccessful", HttpStatus.BAD_REQUEST);
+			//output = "<script>alert('Login unsuccessful')</script>";
 		}
-		return output;
 	}
 	
-	public String logoutUser(HttpServletRequest request, HttpServletResponse response) {
-		String output = "";
+	public ResponseEntity<String> logoutUser(HttpServletRequest request, HttpServletResponse response) {
 		ToDoCookies.deleteUserCookie(response);
 		ToDoCookies.deleteKeyCookie(response);
 		if(!ToDoCookies.findCookie(request, "ToDoAppUser") && !ToDoCookies.findCookie(request, "key")) {
-			
-			output = "<script>alert('Logout successful')</script>";
+			return new ResponseEntity<>("Logout successful", HttpStatus.OK);
+			//output = "<script>alert('Logout successful')</script>";
 		}else {
-			output = "<script>alert('Logout failed!!!')</script>";
+			return new ResponseEntity<>("Logout failed!", HttpStatus.BAD_REQUEST);
+			//output = "<script>alert('Logout failed!!!')</script>";
 		}
-		return output;
 	}
 }

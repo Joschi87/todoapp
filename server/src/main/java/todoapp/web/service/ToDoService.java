@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import todoapp.web.entity.ToDoEntity;
@@ -24,98 +26,74 @@ public class ToDoService {
 	@Autowired
 	ListAllToDoFromSpecialDateService databaseJSONService;
 	
-	public void createToDo(String titleOfToDo, String dateOfToDo, String timeOfToDo, String priorityOfToDo, String textForToDo, HttpServletRequest request) {
-		ToDoEntity createEntity = new ToDoEntity();
+	public ResponseEntity<String> createToDo(String titleOfToDo, String dateOfToDo, String timeOfToDo, String priorityOfToDo, String textForToDo, HttpServletRequest request) {
+		//ToDoEntity createEntity = new ToDoEntity();
 		List<ToDoEntity> listCreatingNewToDo = new ArrayList<>();
 		String username = ToDoCookies.getUserCookie(request);
+
+		if(username.isEmpty()){
+			return new ResponseEntity<>("No User Cookie found", HttpStatus.CONFLICT);
+		}
 		
-		createEntity.setTitleOfToDo(titleOfToDo);
-		createEntity.setDateOfToDo(dateOfToDo);
-		createEntity.setTimeOfToDo(timeOfToDo);
-		createEntity.setPriorityOfToDo(priorityOfToDo);
-		createEntity.setTextForToDo(textForToDo);
-		createEntity.setStatus("New ToDo");
-		createEntity.setAuthor(username);
-		
-		listCreatingNewToDo.add(createEntity);
+		listCreatingNewToDo.add(new ToDoEntity(titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, "New ToDo"));
 		toDoRepository.saveAll(listCreatingNewToDo);
+
+		return new ResponseEntity<>("ToDo Created!", HttpStatus.CREATED);
 	}
 	
-	public String todoChange(String title, String id, String date, String time, String priority, String text) {
+	public ResponseEntity<String> todoChange(String title, String id, String date, String time, String priority, String text) {
 		Integer deleteID = Integer.parseInt(id);
-		String output = "";
 		
 		toDoRepository.deleteById(deleteID);
 		
 		if (toDoRepository.existsById(deleteID) != true) {
 			
-			ToDoEntity createNewToDo = new ToDoEntity();
 			List<ToDoEntity> listNewToDo = new ArrayList<>();
 			
-			createNewToDo.setTitleOfToDo(title);
-			createNewToDo.setDateOfToDo(date);
-			createNewToDo.setTimeOfToDo(time);
-			createNewToDo.setPriorityOfToDo(priority);
-			createNewToDo.setTextForToDo(text);
-			createNewToDo.setStatus("ToDo Changed");
-			
-			listNewToDo.add(createNewToDo);
+			listNewToDo.add(new ToDoEntity(title, date, time, priority, text, "done"));
 			
 			toDoRepository.saveAll(listNewToDo);
 			
 			System.out.println("Change ToDo successfully!");
 			
-			output += "<script>alert('Change of ToDo Information are successfully!');window.close();</script>";
+			//output += "<script>alert('Change of ToDo Information are successfully!');window.close();</script>";
 			
+			return new ResponseEntity<>("Change ToDo successfully!", HttpStatus.CREATED);
 			
 		}else {
 			System.out.println("Error by deleting the ToDo");
-			output += "<script>alert('Change of ToDo Information are <b>not</b> successfully!');window.close();</script>";
+			//output += "<script>alert('Change of ToDo Information are <b>not</b> successfully!');window.close();</script>";
+			return new ResponseEntity<>("Error cant change ToDo", HttpStatus.EXPECTATION_FAILED);
 		}
-		
-		return output;
 	}
 	
-	public String todoDelete(String id) {
+	public ResponseEntity<String> todoDelete(String id) {
 		int deleteID = Integer.parseInt(id);
 		toDoRepository.deleteById(deleteID);
-		return "<script>alert('ToDo are deleted from database!');window.close();</script>";
+		return new ResponseEntity<>("ToDo deleted!", HttpStatus.OK);
 	}
 	
-	public String todoDone(String id, String title, String dateOfToDo, String timeOfToDo, String priority, String textOfToDo) {
-		
+	public ResponseEntity<String> todoDone(String id, String title, String dateOfToDo, String timeOfToDo, String priority, String textOfToDo) {
 		Integer deleteID = Integer.parseInt(id);
-		String output = "";
 		
 		toDoRepository.deleteById(deleteID);
 		
 		if (toDoRepository.existsById(deleteID) != true) {	
-			ToDoEntity createNewToDo = new ToDoEntity();
+			
 			List<ToDoEntity> listNewToDo = new ArrayList<>();
 			
-			createNewToDo.setTitleOfToDo(title);
-			createNewToDo.setDateOfToDo(dateOfToDo);
-			createNewToDo.setTimeOfToDo(timeOfToDo);
-			createNewToDo.setPriorityOfToDo(priority);
-			createNewToDo.setTextForToDo(textOfToDo);
-			createNewToDo.setStatus("ToDo Done");
-			
-			listNewToDo.add(createNewToDo);
+			listNewToDo.add(new ToDoEntity(title, dateOfToDo, timeOfToDo, priority, textOfToDo, "ToDo Done"));
 			
 			toDoRepository.saveAll(listNewToDo);
+
+			return new ResponseEntity<>("ToDo Done", HttpStatus.OK);
 			
-			output += "<script>alert('ToDo Done!');window.close();</script>";
+			//output += "<script>alert('ToDo Done!');window.close();</script>";
 		}else {
 			System.out.println("Error by done the ToDo");
-			output += "<script>alert('ToDo <b>can not</b> change the status to Done');window.close();</script>";
+			//output += "<script>alert('ToDo <b>can not</b> change the status to Done');window.close();</script>";
+			return new ResponseEntity<>("Error todo cant set to done", HttpStatus.CONFLICT);
 		}
-		
-		return output;
-		
-	}
-	
-	public String parseJsonDatabaseContent() {
-		return null;
 	}
 	
 	public String representDatabaseTranslatedFromJSON() {
