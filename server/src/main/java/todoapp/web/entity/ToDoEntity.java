@@ -62,6 +62,6 @@ public class ToDoEntity {
 	
 	@Override
 	public String toString() {
-		return new JSONObject().put("ID", id).put("Title", titleOfToDo).put("Date", dateOfToDo).put("Time", timeOfToDo).put("Priority", priorityOfToDo).put("Text", textForToDo).put("Status", status).put("Author", author).toString();
+		return new JSONObject().put("ID", id).put("Title", titleOfToDo).put("Date", dateOfToDo).put("Time", timeOfToDo).put("Priority", priorityOfToDo).put("Text", textForToDo).put("Status", status).toString();
 	}
 }
