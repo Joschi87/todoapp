@@ -1,7 +1,5 @@
 package todoapp.web.entity;
 
-import java.util.ArrayList;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +29,8 @@ public class ToDoEntity {
 	private String textForToDo;
 	@NotNull
 	private String status;
+
+	public ToDoEntity(){}
 	
 	public ToDoEntity(String titleOfToDo, String dateOfToDo, String timeOfToDo, String priorityOfToDo, String textForToDo, String status) {
 		this.titleOfToDo = titleOfToDo;

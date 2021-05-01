@@ -34,11 +34,13 @@ public class ToDoService {
 		if(username.isEmpty()){
 			return new ResponseEntity<>("No User Cookie found", HttpStatus.CONFLICT);
 		}
+
+		ToDoEntity entity = new ToDoEntity(titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, "New ToDo")
 		
-		listCreatingNewToDo.add(new ToDoEntity(titleOfToDo, dateOfToDo, timeOfToDo, priorityOfToDo, textForToDo, "New ToDo"));
+		listCreatingNewToDo.add(entity);
 		toDoRepository.saveAll(listCreatingNewToDo);
 
-		return new ResponseEntity<>("ToDo Created!", HttpStatus.CREATED);
+		return new ResponseEntity<>("ToDo Created!", HttpStatus.OK);
 	}
 	
 	public ResponseEntity<String> todoChange(String title, String id, String date, String time, String priority, String text) {
@@ -50,7 +52,9 @@ public class ToDoService {
 			
 			List<ToDoEntity> listNewToDo = new ArrayList<>();
 			
-			listNewToDo.add(new ToDoEntity(title, date, time, priority, text, "done"));
+			ToDoEntity entity = new ToDoEntity(title, date, time, priority, text, "done");
+
+			listNewToDo.add(entity);
 			
 			toDoRepository.saveAll(listNewToDo);
 			
@@ -82,7 +86,9 @@ public class ToDoService {
 			
 			List<ToDoEntity> listNewToDo = new ArrayList<>();
 			
-			listNewToDo.add(new ToDoEntity(title, dateOfToDo, timeOfToDo, priority, textOfToDo, "ToDo Done"));
+			ToDoEntity entity = new ToDoEntity(title, dateOfToDo, timeOfToDo, priority, textOfToDo, "ToDo Done");
+
+			listNewToDo.add(entity);
 			
 			toDoRepository.saveAll(listNewToDo);
 
